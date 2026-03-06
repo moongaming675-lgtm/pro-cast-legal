@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRO CAST | الموقع الرسمي</title>
+    <title>PRO CAST | بوت البرودكاست الأول</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* تعريف الألوان المتوهجة */
         :root {
-            --neon-green: #2ecc71;
-            --dark-bg: #050505;
-            --card-bg: #0f0f0f;
-            --glow-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+            --neon-green: #00ff62;
+            --dark-bg: #080808;
+            --card-bg: #121212;
+            --glow: 0 0 15px rgba(0, 255, 98, 0.5);
         }
 
         body {
@@ -20,219 +19,170 @@
             font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* الهيدر مع توهج علوي */
+        /* الهيدر المتوهج بدون صورة */
         header {
-            padding: 80px 20px;
-            background: radial-gradient(circle at center, rgba(46, 204, 113, 0.15) 0%, transparent 70%);
-            border-bottom: 1px solid rgba(46, 204, 113, 0.3);
+            padding: 100px 20px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 255, 98, 0.1) 0%, transparent 70%);
+            border-bottom: 1px solid rgba(0, 255, 98, 0.2);
         }
 
-        .logo-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .logo {
-            width: 140px;
-            border-radius: 50%;
-            border: 2px solid var(--neon-green);
-            box-shadow: 0 0 30px var(--neon-green);
-            transition: 0.5s;
-        }
-
-        .logo:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        h1 {
-            font-size: 3rem;
+        .hero-title {
+            font-size: 4rem;
             color: var(--neon-green);
-            text-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
-            margin-top: 20px;
-            letter-spacing: 2px;
+            text-shadow: 0 0 30px var(--neon-green);
+            margin: 0;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
-        p.description {
-            color: #aaa;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 10px auto 30px;
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
 
-        /* الأزرار المتوهجة */
-        .btn-group { margin-bottom: 40px; }
-
+        /* الأزرار النيون */
+        .btn-container { margin-top: 40px; }
+        
         .btn {
             display: inline-block;
-            padding: 15px 35px;
+            padding: 15px 40px;
             margin: 10px;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 5px;
             font-weight: bold;
-            font-size: 18px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
+            border: 2px solid var(--neon-green);
         }
 
-        .btn-invite {
-            background-color: var(--neon-green);
+        .btn-primary {
+            background: var(--neon-green);
             color: #000;
             box-shadow: 0 0 20px var(--neon-green);
         }
 
-        .btn-support {
-            border: 2px solid var(--neon-green);
+        .btn-secondary {
             color: var(--neon-green);
-            box-shadow: inset 0 0 10px rgba(46, 204, 113, 0.2);
+            background: transparent;
         }
 
         .btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 40px var(--neon-green);
+            color: #fff;
         }
 
-        /* أقسام الأوامر */
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        /* الحاويات */
+        .container { max-width: 1000px; margin: auto; padding: 50px 20px; }
 
-        .section-card {
+        .section {
             background: var(--card-bg);
-            border: 1px solid rgba(46, 204, 113, 0.1);
-            border-radius: 20px;
             padding: 30px;
+            border-radius: 15px;
             margin-bottom: 40px;
+            border-left: 4px solid var(--neon-green);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: 0.3s;
-        }
-
-        .section-card:hover {
-            border-color: var(--neon-green);
-            box-shadow: 0 0 25px rgba(46, 204, 113, 0.2);
         }
 
         h2 {
             color: var(--neon-green);
+            text-shadow: var(--glow);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
         }
 
-        /* الجداول المتوهجة */
-        table { width: 100%; border-collapse: collapse; }
-        
-        th {
-            text-align: right;
-            color: #888;
-            padding: 15px;
-            border-bottom: 1px solid #222;
-        }
+        /* الجداول */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { text-align: right; color: #555; padding: 10px; font-size: 0.9rem; }
+        td { padding: 15px 10px; border-bottom: 1px solid #1a1a1a; }
+        .cmd { color: var(--neon-green); font-family: monospace; font-weight: bold; }
 
-        td {
-            padding: 18px 15px;
-            border-bottom: 1px solid #1a1a1a;
-            font-size: 1.05rem;
-        }
+        /* سياسة الخصوصية */
+        .privacy-text { color: #aaa; font-size: 0.95rem; }
+        .privacy-item { margin-bottom: 15px; display: flex; gap: 10px; }
+        .privacy-item i { color: var(--neon-green); margin-top: 5px; }
 
-        td:first-child {
-            color: var(--neon-green);
-            font-family: monospace;
-            font-weight: bold;
-        }
-
-        /* فوتر الموقع */
         footer {
-            padding: 50px;
+            text-align: center;
+            padding: 40px;
             border-top: 1px solid #1a1a1a;
-            color: #555;
-        }
-
-        .footer-links a {
-            color: var(--neon-green);
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .footer-links a:hover { opacity: 1; text-decoration: underline; }
-
-        /* تأثيرات جزيئات الخلفية */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(46, 204, 113, 0.05) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: -1;
+            color: #444;
         }
     </style>
 </head>
 <body>
 
-<div class="bg-glow"></div>
-
 <header>
-    <div class="logo-container">
-        <img src="https://googleusercontent.com/image_generation_content/11" alt="PRO CAST" class="logo">
-    </div>
-    <h1>PRO CAST</h1>
-    <p class="description">استمتع بتجربة فريدة مع أقوى بوت لإدارة وحماية السيرفرات، مع نظام أذكار متطور وسرعة لا مثيل لها.</p>
+    <h1 class="hero-title">PRO CAST</h1>
+    <p class="hero-subtitle">أسرع وأذكى نظام برودكاست على ديسكورد</p>
     
-    <div class="btn-group">
-        <a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot" class="btn btn-invite">
-            <i class="fab fa-discord"></i> إضافة البوت الآن
-        </a>
-        <a href="https://discord.gg/YOUR_INVITE" class="btn btn-support">
-            <i class="fas fa-headset"></i> سيرفر الدعم الفني
-        </a>
+    <div class="btn-container">
+        <a href="#" class="btn btn-primary"><i class="fab fa-discord"></i> أضف البوت</a>
+        <a href="#" class="btn btn-secondary"><i class="fas fa-server"></i> سيرفر الدعم</a>
     </div>
 </header>
 
 <div class="container">
-    
-    <div class="section-card">
-        <h2><i class="fas fa-hammer"></i> أوامر الإدارة والحماية</h2>
+
+    <div class="section">
+        <h2><i class="fas fa-bullhorn"></i> أوامر البرودكاست (الأساسية)</h2>
         <table>
             <thead>
                 <tr><th>الأمر</th><th>الوصف</th></tr>
             </thead>
             <tbody>
-                <tr><td>/ban</td><td>حظر العضو المخرب من السيرفر نهائياً</td></tr>
-                <tr><td>/kick</td><td>طرد العضو من السيرفر مع إمكانية العودة</td></tr>
-                <tr><td>/clear</td><td>مسح الرسائل بسرعة (حتى 100 رسالة)</td></tr>
-                <tr><td>/lock</td><td>إغلاق القناة ومنع الجميع من الكتابة</td></tr>
+                <tr><td class="cmd">/bc [الرسالة]</td><td>إرسال برودكاست لجميع أعضاء السيرفر</td></tr>
+                <tr><td class="cmd">/obc [الرسالة]</td><td>إرسال برودكاست للأعضاء المتصلين فقط (Online)</td></tr>
+                <tr><td class="cmd">/rbc [الرتبة] [الرسالة]</td><td>إرسال برودكاست لرتبة معينة فقط</td></tr>
+                <tr><td class="cmd">/set-log</td><td>تحديد قناة لعرض تقارير الإرسال</td></tr>
             </tbody>
         </table>
     </div>
 
-    <div class="section-card">
-        <h2><i class="fas fa-moon"></i> أوامر الأذكار والإسلاميات</h2>
+    <div class="section">
+        <h2><i class="fas fa-user-shield"></i> أوامر الإدارة العامة</h2>
         <table>
             <thead>
                 <tr><th>الأمر</th><th>الوصف</th></tr>
             </thead>
             <tbody>
-                <tr><td>/athkar</td><td>تفعيل إرسال الأذكار التلقائية في القناة</td></tr>
-                <tr><td>/morning</td><td>عرض أذكار الصباح كاملة</td></tr>
-                <tr><td>/evening</td><td>عرض أذكار المساء كاملة</td></tr>
-                <tr><td>/quran</td><td>تشغيل آيات من القرآن الكريم</td></tr>
+                <tr><td class="cmd">/clear</td><td>مسح الرسائل بسرعة فائقة</td></tr>
+                <tr><td class="cmd">/lock</td><td>إغلاق القناة الحالية فوراً</td></tr>
+                <tr><td class="cmd">/unlock</td><td>إعادة فتح القناة</td></tr>
+                <tr><td class="cmd">/ping</td><td>عرض سرعة استجابة البوت</td></tr>
             </tbody>
         </table>
+    </div>
+
+    <div id="privacy" class="section">
+        <h2><i class="fas fa-lock"></i> سياسة الخصوصية والأمان</h2>
+        <div class="privacy-text">
+            <div class="privacy-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>تخزين البيانات:</strong> بوت PRO CAST لا يقوم بتخزين محتوى رسائل البرودكاست أو البيانات الشخصية للأعضاء.</span>
+            </div>
+            <div class="privacy-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>الصلاحيات:</strong> البوت يحتاج فقط للصلاحيات الأساسية لإرسال الرسائل الخاصة والتأكد من أمان السيرفر.</span>
+            </div>
+            <div class="privacy-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>الاستخدام العادل:</strong> يمنع استخدام ميزة البرودكاست في إرسال روابط سبام أو محتوى مخالف لقوانين ديسكورد.</span>
+            </div>
+        </div>
     </div>
 
 </div>
 
 <footer>
     <p>&copy; 2026 PRO CAST - جميع الحقوق محفوظة</p>
-    <div class="footer-links">
-        <a href="TOS.md">شروط الخدمة</a>
-        <a href="Privacy.md">سياسة الخصوصية</a>
-        <a href="#">تواصل معنا</a>
-    </div>
 </footer>
 
 </body>
