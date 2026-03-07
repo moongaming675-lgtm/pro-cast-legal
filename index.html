@@ -20,154 +20,208 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* تأثير توهج عند مرور الماوس على العنوان الرئيسي */
+        /* هيدر مع تأثير توهج تفاعلي */
         header {
             padding: 120px 20px;
             text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 255, 98, 0.05) 0%, transparent 70%);
         }
 
         .hero-title {
-            font-size: 5rem;
+            font-size: clamp(3.5rem, 12vw, 6rem);
             color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
             margin: 0;
-            cursor: default;
-            transition: 0.5s;
+            cursor: pointer;
+            transition: 0.5s ease-in-out;
+            font-weight: 900;
         }
 
         .hero-title:hover {
-            text-shadow: 0 0 20px var(--neon-green), 0 0 50px var(--neon-green), 0 0 80px var(--neon-green);
-            transform: scale(1.05);
+            text-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green), 0 0 100px var(--neon-green);
+            transform: scale(1.08);
         }
 
-        /* الأزرار المتوهجة */
+        .hero-subtitle {
+            color: #555;
+            font-size: 1.3rem;
+            margin-top: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* أزرار النيون المتوهجة بالروابط المطلوبة */
+        .btn-container { margin-top: 50px; }
+        
         .btn {
             display: inline-block;
             padding: 18px 45px;
-            margin: 10px;
+            margin: 12px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
+            font-size: 1.1rem;
             border: 2px solid var(--neon-green);
-            transition: 0.4s;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             color: var(--neon-green);
-            position: relative;
+            background: transparent;
         }
 
+        /* تأثير التوهج عند الوقوف على الزر */
         .btn:hover {
             background: var(--neon-green);
             color: #000;
-            box-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green);
-            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--neon-green), 0 0 50px var(--neon-green);
+            transform: translateY(-8px);
         }
 
-        /* البطاقات المتوهجة عند مرور الماوس */
-        .container { max-width: 900px; margin: auto; padding: 50px 20px; }
+        /* حاوية البطاقات */
+        .container { max-width: 900px; margin: auto; padding: 40px 20px; }
 
         .section-card {
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 20px;
             margin-bottom: 40px;
-            border: 1px solid rgba(0, 255, 98, 0.1);
-            transition: 0.4s ease-in-out;
-            cursor: pointer;
+            border: 1px solid rgba(0, 255, 98, 0.05);
+            transition: 0.4s ease;
+            position: relative;
         }
 
-        /* التوهج القوي عند لمس الماوس للبطاقة */
+        /* تأثير التوهج للبطاقة بالكامل */
         .section-card:hover {
             border-color: var(--neon-green);
-            box-shadow: 0 0 25px rgba(0, 255, 98, 0.2), inset 0 0 15px rgba(0, 255, 98, 0.1);
-            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 255, 98, 0.15);
+            transform: translateY(-10px);
         }
 
         h2 {
             color: var(--neon-green);
             margin-bottom: 30px;
-            transition: 0.3s;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .section-card:hover h2 {
-            text-shadow: 0 0 15px var(--neon-green);
-        }
-
-        /* أوامر البريفكس */
+        /* أوامر البريفكس (-) */
         .command-item {
             display: flex;
             justify-content: space-between;
-            padding: 15px;
-            border-radius: 8px;
+            align-items: center;
+            padding: 18px;
+            border-radius: 12px;
             transition: 0.3s;
+            border-bottom: 1px solid #151515;
         }
 
         .command-item:hover {
-            background: rgba(0, 255, 98, 0.05);
+            background: rgba(0, 255, 98, 0.04);
+            padding-right: 25px;
         }
 
         .cmd-name {
             color: var(--neon-green);
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            font-family: 'Courier New', monospace;
             text-shadow: 0 0 5px var(--neon-green);
         }
 
-        /* الفوتر */
+        .cmd-desc { color: #888; font-size: 1.05rem; }
+
+        /* قسم الخصوصية */
+        .privacy-box p {
+            color: #777;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .privacy-box i { color: var(--neon-green); margin-top: 5px; }
+
         footer {
             text-align: center;
-            padding: 40px;
-            opacity: 0.3;
+            padding: 60px;
+            color: #222;
+            font-weight: bold;
+            border-top: 1px solid #111;
             transition: 0.5s;
         }
-        footer:hover { opacity: 1; color: var(--neon-green); }
+
+        footer:hover { color: var(--neon-green); opacity: 1; }
+
+        /* تأثير جزيئات الخلفية */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 10%, rgba(0, 255, 98, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
+<div class="bg-glow"></div>
+
 <header>
     <h1 class="hero-title">PRO CAST</h1>
-    <p style="color: #666;">نظام البرودكاست المتكامل | Prefix: +</p>
+    <p class="hero-subtitle">الاحتراف في الإرسال | Prefix: -</p>
     
     <div class="btn-container">
-        <a href="#" class="btn">إضافة البوت</a>
-        <a href="#" class="btn">سيرفر الدعم</a>
+        <a href="https://discord.com/developers/teams/accept?token=eyJpZCI6MTQ0MTEyNzAxOTE0NzY4OTk4NiwidGVhbV9pZCI6MTQ3OTYxODk1NDI5MTk3MDE5MX0.aathIQ.ExhraNoJDV4JFtjJxnUp2sXk1YM" class="btn">
+            <i class="fab fa-discord"></i> إضافة البوت
+        </a>
+        <a href="https://discord.gg/8QfppTJxe" class="btn">
+            <i class="fas fa-server"></i> سيرفر الدعم
+        </a>
     </div>
 </header>
 
 <div class="container">
 
     <div class="section-card">
-        <h2><i class="fas fa-terminal"></i> أوامر البريفكس</h2>
+        <h2><i class="fas fa-terminal"></i> قائمة الأوامر الأساسية</h2>
+        
         <div class="command-item">
-            <span class="cmd-name">+help</span>
-            <span>فتح قائمة المساعدة</span>
+            <span class="cmd-name">-help</span>
+            <span class="cmd-desc">عرض قائمة المساعدة الكاملة</span>
         </div>
+        
         <div class="command-item">
-            <span class="cmd-name">+bc</span>
-            <span>بدء إرسال برودكاست</span>
+            <span class="cmd-name">-bc</span>
+            <span class="cmd-desc">إرسال رسالة برودكاست للأعضاء</span>
         </div>
+        
         <div class="command-item">
-            <span class="cmd-name">+show</span>
-            <span>إحصائيات البوت</span>
+            <span class="cmd-name">-show</span>
+            <span class="cmd-desc">عرض إحصائيات وحالة البوت</span>
         </div>
+        
         <div class="command-item">
-            <span class="cmd-name">+prefix</span>
-            <span>تغيير بادئة الأوامر</span>
+            <span class="cmd-name">-prefix</span>
+            <span class="cmd-desc">تغيير البريفكس الحالي (-)</span>
         </div>
     </div>
 
     <div class="section-card">
-        <h2><i class="fas fa-user-shield"></i> الخصوصية</h2>
-        <p>• <strong>التشفير:</strong> لا يتم تخزين بيانات الرسائل الخاصة إطلاقاً.</p>
-        <p>• <strong>التحكم:</strong> أنت المتحكم الوحيد في عملية الإرسال داخل سيرفرك.</p>
-        <p>• <strong>الأمان:</strong> البوت محمي بأحدث أنظمة الحماية لضمان استقرار الخدمة.</p>
+        <h2><i class="fas fa-user-shield"></i> سياسة الخصوصية والأمان</h2>
+        <div class="privacy-box">
+            <p><i class="fas fa-check-circle"></i> <strong>حماية الخصوصية:</strong> نحن لا نطلع ولا نخزن أي محتوى يتم إرساله عبر البرودكاست.</p>
+            <p><i class="fas fa-check-circle"></i> <strong>استقرار الخدمة:</strong> يعمل PRO CAST على سيرفرات عالية الأداء لضمان وصول رسائلك بسرعة.</p>
+            <p><i class="fas fa-check-circle"></i> <strong>الاستخدام:</strong> استخدام البوت يعني موافقتك على عدم استخدامه في إرسال Spam مخالف لقوانين ديسكورد.</p>
+        </div>
     </div>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 PRO CAST - THE POWER OF NEON</p>
+    <p>&copy; 2026 PRO CAST - THE GREEN NEON EXPERIENCE</p>
 </footer>
 
 </body>
